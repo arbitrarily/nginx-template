@@ -44,6 +44,7 @@ server {
         deny 46.246.58.10;
         deny 88.208.236.239;
         deny 108.162.229.0/24; # alaafood.us, bstbikerepair.us
+        deny 128.199.141.0/24;
         deny 119.29.64.0/24; # "-"
         deny 141.101.69.0/24; # cleanfoodd.us
         deny 141.101.88.0/24; # lolrental.us, walkerrentals.us, allnaturalfood.us
@@ -111,9 +112,9 @@ server {
     }
 
     # allow TinyMCE
-    location = /wp-includes/js/tinymce/wp-tinymce.php {
-        include nginxconfig.io/php_fastcgi.conf;
-    }
+    # location = /wp-includes/js/tinymce/wp-tinymce.php {
+    #     include nginxconfig.io/php_fastcgi.conf;
+    # }
 
     # deny wp-content, wp-includes php files
     location ~* ^/(?:wp-content|wp-includes)/.*\.php$ {
