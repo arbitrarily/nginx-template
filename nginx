@@ -50,7 +50,6 @@ server {
         deny 141.101.88.0/24; # lolrental.us, walkerrentals.us, allnaturalfood.us
         deny 141.101.96.0/24; # villarental.us, batteryrepair.us, "-"
         deny 159.65.32.0/24; # walkerrentals.us, bot hitting cron
-        deny 162.158.63.0/24; # walkerrentals.us
         deny 162.158.79.191; # "http://www.google.com.hk"
         deny 162.158.134.0/24;
         deny 162.158.142.0/24; # textbookrentalstender.us, alaafood.us
