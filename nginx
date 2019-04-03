@@ -77,43 +77,64 @@ server {
         include snippets/fastcgi-php.conf;
     }
 
+    # apache
     location ~ /\.ht {
         deny all;
     }
 
+    # xmlrpc
     location = /xmlrpc.php {
         deny all;
         access_log off;
         log_not_found off;
     }
 
+    # favicon
     location = /favicon.ico {
         log_not_found off;
         access_log off;
     }
 
+    # robots
     location = /robots.txt {
         allow all;
         log_not_found off;
         access_log off;
     }
 
+    # no php in uploads
     location ~* /(?:uploads|files)/.*\.php$ {
         deny all;
     }
 
+    # deny pain points
+    location ~ /(.|wp-config.php|wp-comments-post.php|readme.html|license.txt) {
+        deny all;
+    }
+
+    # no scripts
+    location ~* .(pl|cgi|py|sh|lua)$ {
+        return 444;
+    }
+
+    # sensitive files
+    location ~* .(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(.php)?|xtmpl)$|^(..*|Entries.*|Repository|Root|Tag|Template)$|.php_ {
+        return 444;
+    }
+
+    # no executable code in uploads
     location ~* ^/wp-content/uploads/.*\.(?:s?html?|php|js|swf)$ {
+        deny all;
+    }
+
+    # no executable code in uploads
+    location ~* /(?:uploads|files)/.*.php$ {
         deny all;
     }
 
     location ~* ^/(?:wp-content|wp-includes)/.*\.php$ {
         deny all;
     }
-
-    # allow TinyMCE
-    # location = /wp-includes/js/tinymce/wp-tinymce.php {
-    #     include nginxconfig.io/php_fastcgi.conf;
-    # }
 
     # deny wp-content, wp-includes php files
     location ~* ^/(?:wp-content|wp-includes)/.*\.php$ {
