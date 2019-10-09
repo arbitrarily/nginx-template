@@ -113,9 +113,9 @@ server {
     }
 
     # sensitive files
-    location ~* .(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(.php)?|xtmpl)$|^(..*|Entries.*|Repository|Root|Tag|Template)$|.php_ {
-        return 444;
-    }
+    # location ~* .(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(.php)?|xtmpl)$|^(..*|Entries.*|Repository|Root|Tag|Template)$|.php_ {
+    #     return 444;
+    # }
 
     # no executable code in uploads
     location ~* ^/wp-content/uploads/.*\.(?:s?html?|php|js|swf)$ {
