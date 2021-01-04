@@ -2,13 +2,13 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    set $base /var/www/PROJECTDIRECTORY;
+    set $base /var/www/REPLACEMEPROJECTDIRECTORY;
 
     root $base;
 
     index index.php index.html index.htm index.nginx-debian.html;
 
-    server_name _ IPADDRESS DOMAINADDRESS;
+    server_name _ REPLACEMEIPADDRESS;
 
     client_max_body_size 8M;
 
@@ -61,7 +61,7 @@ server {
     # fastcgi
     location ~ \.php$ {
         # fastcgi
-        fastcgi_pass                unix:/run/php/php7.4-fpm.sock;
+        fastcgi_pass                unix:/run/php/phpREPLACEMEPHPVERSION-fpm.sock;
         fastcgi_split_path_info     ^(.+\.php)(/.+)$;
         fastcgi_param               SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param               PHP_ADMIN_VALUE open_basedir=$base/:/usr/lib/php/:/tmp/;
